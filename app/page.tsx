@@ -28,10 +28,10 @@ export default function Home() {
       <section id="about" className="py-20 px-4 bg-white/10 backdrop-blur-sm">
         <div className="max-w-4xl mx-auto text-white space-y-6">
           <h2 className="text-4xl font-bold">About Me</h2>
-          <p className="text-lg opacity-90">
-            I'm a passionate developer creating beautiful and functional web experiences. 
-            With expertise in modern web technologies, I bring ideas to life through code.
-          </p>
+           <p className="text-lg opacity-90">
+             I&apos;m a passionate developer creating beautiful and functional web experiences. 
+             With expertise in modern web technologies, I bring ideas to life through code.
+           </p>
         </div>
       </section>
 
@@ -54,7 +54,7 @@ export default function Home() {
       {/* Footer */}
       <footer id="contact" className="bg-black/30 py-12 px-4">
         <div className="max-w-6xl mx-auto text-center text-white">
-          <h2 className="text-3xl font-bold mb-6">Let's Connect</h2>
+           <h2 className="text-3xl font-bold mb-6">Let&apos;s Connect</h2>
           <div className="space-x-4 mb-6">
             <a href="#" className="hover:text-blue-200 transition">Twitter</a>
             <a href="#" className="hover:text-blue-200 transition">LinkedIn</a>
