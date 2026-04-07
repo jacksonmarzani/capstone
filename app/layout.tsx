@@ -1,9 +1,16 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Welcome to My Portfolio',
-  description: 'A beautiful portfolio showcasing amazing work',
+  title: 'Buffet Timer Monitor',
+  description: 'Live timer monitoring system for buffet management with camera feed',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({
@@ -13,7 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <head>
+        <meta name="apple-mobile-web-app-capable" content="true" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Buffet Timer" />
+        <meta name="theme-color" content="#000000" />
+      </head>
+      <body className="overflow-hidden">{children}</body>
     </html>
   )
 }
