@@ -82,7 +82,7 @@ export default function TimerCube({
       }
       enlargeTimeoutRef.current = setTimeout(() => {
         setIsEnlarged(false);
-      }, 2000);
+      }, 1500);
     }
 
     lastTapRef.current = now;

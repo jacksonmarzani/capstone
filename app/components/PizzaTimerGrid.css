@@ -10,24 +10,48 @@
 
 .pizza-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
   width: 100%;
   flex: 0 0 auto;
 }
 
 .pizza-row-fixed {
-  /* First row - always visible */
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .pizza-row-wrapper {
   position: relative;
   width: 100%;
   flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .pizza-row-additional {
-  position: relative;
+  display: grid;
+  gap: 15px;
+}
+
+.pizza-row-additional.three-grid {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: calc((100% / 4) * 3 + (15px * 2));
+}
+
+.pizza-row-additional.full-grid {
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  max-width: none;
+}
+
+/* Timer Drag Wrapper */
+.timer-drag-wrapper {
+  cursor: grab;
+  touch-action: none;
+}
+
+.timer-drag-wrapper:active {
+  cursor: grabbing;
+  opacity: 0.7;
 }
 
 /* Grid Placeholder Styling */
@@ -44,7 +68,7 @@
   transition: all 0.3s ease;
 }
 
-.pizza-row-additional:empty + .btn-add-timer .timer-grid-placeholder:hover {
+.timer-grid-placeholder:hover {
   border-color: #ff6b35;
   background: rgba(255, 107, 53, 0.05);
 }
@@ -95,6 +119,10 @@
     gap: 12px;
   }
 
+  .pizza-row-additional.three-grid {
+    max-width: calc((100% / 4) * 3 + (12px * 2));
+  }
+
   .btn-add-timer {
     width: 56px;
     height: 56px;
@@ -113,6 +141,10 @@
     border-radius: 8px;
   }
 
+  .pizza-row-additional.three-grid {
+    max-width: calc((100% / 4) * 3 + (10px * 2));
+  }
+
   .btn-add-timer {
     width: 52px;
     height: 52px;
@@ -126,6 +158,10 @@
 @media (min-width: 1024px) and (orientation: portrait) {
   .pizza-row {
     gap: 16px;
+  }
+
+  .pizza-row-additional.three-grid {
+    max-width: calc((100% / 4) * 3 + (16px * 2));
   }
 
   .btn-add-timer {
