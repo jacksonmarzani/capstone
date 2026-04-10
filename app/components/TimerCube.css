@@ -1,0 +1,98 @@
+.timer-cube {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #2d8a2d;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.timer-cube:active {
+  transform: scale(0.98);
+}
+
+.timer-cube.enlarged {
+  transform: scale(1.33);
+  z-index: 100;
+}
+
+.timer-remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.timer-remove-btn:active {
+  background: rgba(255, 0, 0, 1);
+  transform: scale(0.9);
+}
+
+.timer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.timer-label {
+  font-size: clamp(10px, 2.5vw, 16px);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timer-display {
+  font-size: clamp(28px, 8vw, 48px);
+  font-weight: 700;
+  color: #fff;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Color gradient transitions */
+.timer-cube[style*="rgb(255,"] {
+  transition: background-color 0.5s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .timer-cube {
+    border-radius: 8px;
+    border-width: 2px;
+  }
+
+  .timer-label {
+    font-size: clamp(8px, 2vw, 12px);
+  }
+
+  .timer-display {
+    font-size: clamp(20px, 6vw, 36px);
+  }
+}

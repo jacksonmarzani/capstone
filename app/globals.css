@@ -1,51 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 * {
-  -webkit-user-select: none;
   -webkit-touch-callout: none;
+  -webkit-user-select: none;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #1a1a1a;
+  color: #fff;
 }
 
-#__next {
-  width: 100%;
-  height: 100%;
-}
-
-input, textarea, button {
-  -webkit-user-select: text;
-  user-select: text;
-}
-
-/* Prevent default iOS zoom on input focus */
-input[type="text"] {
-  font-size: 16px;
-}
-
-/* Remove bounce scroll on iOS */
 body {
-  overscroll-behavior: none;
-}
-
-/* Smooth transitions for dragging */
-.dragging {
-  opacity: 0.5;
-  cursor: grabbing;
-}
-
-/* Better tap targets for touch */
-button {
-  min-height: 44px;
-  min-width: 44px;
+  margin: 0;
+  padding: 0;
 }
