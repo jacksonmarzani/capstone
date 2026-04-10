@@ -7,7 +7,7 @@
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .video-stream {
@@ -25,7 +25,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
   gap: 12px;
 }
 
@@ -50,32 +50,33 @@
   font-size: 18px;
   font-weight: 600;
   margin: 0;
-  color: #ffd700;
+  color: #ff9800;
 }
 
 .warning-subtext,
 .error-subtext {
   font-size: 14px;
   margin: 0;
-  color: #999;
+  color: #666;
 }
 
 .camera-controls {
   display: flex;
   gap: 8px;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(255, 255, 255, 0.95);
   height: 60px;
   align-items: center;
+  border-top: 1px solid #e0e0e0;
 }
 
 .stream-input {
   flex: 1;
   padding: 8px 12px;
-  border: 2px solid #444;
+  border: 2px solid #ddd;
   border-radius: 4px;
-  background: #222;
-  color: #fff;
+  background: #fff;
+  color: #000;
   font-size: 13px;
   font-family: monospace;
   outline: none;
@@ -84,11 +85,11 @@
 }
 
 .stream-input:focus {
-  border-color: #00d4ff;
+  border-color: #ff6b35;
 }
 
 .stream-input::placeholder {
-  color: #666;
+  color: #999;
 }
 
 .btn-set,
@@ -105,22 +106,22 @@
 }
 
 .btn-set {
-  background: #00d4ff;
-  color: #000;
+  background: #22c55e;
+  color: #fff;
 }
 
 .btn-set:active {
-  background: #00a3cc;
+  background: #16a34a;
   transform: scale(0.95);
 }
 
 .btn-clear {
-  background: #ff4444;
+  background: #ef4444;
   color: #fff;
 }
 
 .btn-clear:active {
-  background: #cc0000;
+  background: #dc2626;
   transform: scale(0.95);
 }
 

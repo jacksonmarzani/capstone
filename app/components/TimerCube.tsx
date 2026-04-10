@@ -41,20 +41,24 @@ export default function TimerCube({
   const getTimerColor = (totalSeconds: number) => {
     if (totalSeconds < 1200) {
       // 0-20min: green
-      return "green";
+      return "#22c55e";
     } else if (totalSeconds < 1800) {
       // 20-30min: green to yellow
       const progress = (totalSeconds - 1200) / 600;
-      const greenVal = Math.floor(255 * (1 - progress));
-      return `rgb(255, ${greenVal}, 0)`;
+      const r = Math.floor(34 + (255 - 34) * progress);
+      const g = Math.floor(197 + (191 - 197) * progress);
+      const b = Math.floor(94 + (14 - 94) * progress);
+      return `rgb(${r}, ${g}, ${b})`;
     } else if (totalSeconds < 2400) {
       // 30-40min: yellow to red
       const progress = (totalSeconds - 1800) / 600;
-      const greenVal = Math.floor(255 * (1 - progress));
-      return `rgb(255, ${greenVal}, 0)`;
+      const r = Math.floor(245 + (220 - 245) * progress);
+      const g = Math.floor(158 + (38 - 158) * progress);
+      const b = Math.floor(11 + (38 - 11) * progress);
+      return `rgb(${r}, ${g}, ${b})`;
     } else {
       // 40min+: red
-      return "red";
+      return "#dc2626";
     }
   };
 

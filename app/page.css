@@ -3,8 +3,9 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #1a1a1a;
+  background: #ffffff;
   overflow: hidden;
+  position: relative;
 }
 
 .top-section {
@@ -19,8 +20,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0d0d0d;
-  border-right: 2px solid #333;
+  background: #f5f5f5;
+  border-right: 2px solid #e0e0e0;
   min-width: 0;
 }
 
@@ -30,7 +31,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: #1a1a1a;
+  background: #ffffff;
   min-width: 0;
 }
 
@@ -48,10 +49,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1a1a1a;
-  border-top: 2px solid #333;
+  background: #ffffff;
+  border-top: 2px solid #e0e0e0;
   padding: 20px;
   overflow-y: auto;
+  position: relative;
 }
 
 /* Responsive design */

@@ -37,50 +37,57 @@ export default function PizzaTimerGrid() {
         <TimerCube id="pizza-4" label="Pizza 4" />
       </div>
 
-      {/* Second Row: Additional Timers (up to 4) + Add Button */}
-      <div className="pizza-row-wrapper">
-        <div className="pizza-row pizza-row-additional">
-          {/* Empty Grid Placeholder */}
-          {additionalTimers.length === 0 && (
-            <>
-              <div className="timer-grid-placeholder"></div>
-              <div className="timer-grid-placeholder"></div>
-              <div className="timer-grid-placeholder"></div>
-              <div className="timer-grid-placeholder"></div>
-            </>
-          )}
+      {/* Second Row: Additional Timers (up to 4) */}
+      {additionalTimers.length > 0 && (
+        <div className="pizza-row-wrapper">
+          <div className="pizza-row pizza-row-additional">
+            {/* Render Additional Timers */}
+            {additionalTimers.map((id) => (
+              <TimerCube
+                key={id}
+                id={id}
+                label={`Pizza ${4 + additionalTimers.indexOf(id) + 1}`}
+                removable={true}
+                onRemove={() => removeTimer(id)}
+              />
+            ))}
 
-          {/* Render Additional Timers */}
-          {additionalTimers.map((id) => (
-            <TimerCube
-              key={id}
-              id={id}
-              label={`Pizza ${4 + additionalTimers.indexOf(id) + 1}`}
-              removable={true}
-              onRemove={() => removeTimer(id)}
-            />
-          ))}
-
-          {/* Fill remaining grid spaces with placeholders */}
-          {additionalTimers.length > 0 &&
-            additionalTimers.length < 4 &&
-            Array.from({ length: 4 - additionalTimers.length }).map(
-              (_, i) => (
-                <div
-                  key={`placeholder-${i}`}
-                  className="timer-grid-placeholder"
-                ></div>
-              )
-            )}
+            {/* Fill remaining grid spaces with placeholders */}
+            {additionalTimers.length < 4 &&
+              Array.from({ length: 4 - additionalTimers.length }).map(
+                (_, i) => (
+                  <div
+                    key={`placeholder-${i}`}
+                    className="timer-grid-placeholder"
+                  ></div>
+                )
+              )}
+          </div>
         </div>
+      )}
 
-        {/* Add Timer Button */}
-        {additionalTimers.length < 4 && (
-          <button className="btn-add-timer" onClick={addTimer}>
-            <span className="plus-icon">+</span>
-          </button>
-        )}
-      </div>
+      {/* Empty Grid Placeholder - only show when no additional timers */}
+      {additionalTimers.length === 0 && (
+        <div className="pizza-row-wrapper">
+          <div className="pizza-row pizza-row-additional">
+            <div className="timer-grid-placeholder"></div>
+            <div className="timer-grid-placeholder"></div>
+            <div className="timer-grid-placeholder"></div>
+            <div className="timer-grid-placeholder"></div>
+          </div>
+        </div>
+      )}
+
+      {/* Add Timer Button - Fixed Overlay */}
+      {additionalTimers.length < 4 && (
+        <button
+          className="btn-add-timer"
+          onClick={addTimer}
+          disabled={additionalTimers.length >= 4}
+        >
+          <span className="plus-icon">+</span>
+        </button>
+      )}
     </div>
   );
 }
