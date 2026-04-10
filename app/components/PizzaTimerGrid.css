@@ -24,7 +24,7 @@
   width: 100%;
   flex: 0 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .pizza-row-additional {
@@ -34,15 +34,8 @@
 
 .pizza-row-additional.three-grid {
   grid-template-columns: repeat(3, 1fr);
-  max-width: calc((100% / 4) * 3 + (12px * 2));
-}
-
-.pizza-row-additional.three-grid.single-timer {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.pizza-row-additional.three-grid.single-timer > :first-child {
-  grid-column: 2;
+  width: 100%;
+  max-width: none;
 }
 
 .pizza-row-additional.full-grid {
@@ -82,7 +75,7 @@
   background: rgba(34, 197, 94, 0.05);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   color: #ccc;
   font-size: 24px;
   transition: all 0.3s ease;
@@ -108,7 +101,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   transition: all 0.2s ease;
   font-weight: bold;
   box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
@@ -123,7 +116,7 @@
 .plus-icon {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   line-height: 1;
 }
 
@@ -206,7 +199,7 @@
   width: 100%;
   flex: 0 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .pizza-row-additional {
@@ -244,7 +237,7 @@
   background: rgba(34, 197, 94, 0.05);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   color: #ccc;
   font-size: 24px;
   transition: all 0.3s ease;
@@ -270,7 +263,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   transition: all 0.2s ease;
   font-weight: bold;
   box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
@@ -285,7 +278,7 @@
 .plus-icon {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   line-height: 1;
 }
 

@@ -20,11 +20,18 @@ export default function PizzaTimerGrid() {
 
   const addTimer = () => {
     if (additionalTimers.length < 4) {
-      const newPosition = additionalTimers.length;
-      setAdditionalTimers([
-        ...additionalTimers,
-        { id: `pizza-extra-${Date.now()}`, position: newPosition },
-      ]);
+      // First timer goes to position 1 (middle of 3-slot grid)
+      // Subsequent timers continue from there
+      const newPosition = additionalTimers.length === 0 ? 1 : additionalTimers.length;
+      const newTimer = { id: `pizza-extra-${Date.now()}`, position: newPosition };
+      
+      if (additionalTimers.length === 0) {
+        // First timer added - just place it at position 1
+        setAdditionalTimers([newTimer]);
+      } else {
+        // Subsequent timers - add to end and adjust any existing timers if needed
+        setAdditionalTimers([...additionalTimers, newTimer]);
+      }
     }
   };
 
