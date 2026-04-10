@@ -35,26 +35,40 @@ export default function PizzaTimerGrid() {
     setAdditionalTimers(updatedTimers);
   };
 
-  const handleDragStart = (id: string) => {
+  const handleDragStart = (
+    e: React.DragEvent<HTMLDivElement>,
+    id: string
+  ) => {
     setDraggedId(id);
+    e.dataTransfer.effectAllowed = "move";
   };
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
   };
 
-  const handleDrop = (targetPosition: number) => {
+  const handleDrop = (e: React.DragEvent, targetPosition: number) => {
+    e.preventDefault();
     if (!draggedId) return;
 
     const draggedTimer = additionalTimers.find((t) => t.id === draggedId);
     if (!draggedTimer) return;
 
-    const newTimers = additionalTimers.filter((t) => t.id !== draggedId);
-    newTimers.splice(targetPosition, 0, draggedTimer);
+    const otherTimers = additionalTimers.filter((t) => t.id !== draggedId);
+    const newTimers = [
+      ...otherTimers.slice(0, targetPosition),
+      draggedTimer,
+      ...otherTimers.slice(targetPosition),
+    ];
 
     setAdditionalTimers(
       newTimers.map((t, index) => ({ ...t, position: index }))
     );
+    setDraggedId(null);
+  };
+
+  const handleDragEnd = () => {
     setDraggedId(null);
   };
 
@@ -90,7 +104,7 @@ export default function PizzaTimerGrid() {
           <div
             className={`pizza-row pizza-row-additional ${
               isFullGrid ? "full-grid" : "three-grid"
-            }`}
+            } ${additionalTimers.length === 1 ? "single-timer" : ""}`}
           >
             {gridItems.map((item, index) => {
               if ("isPlaceholder" in item && item.isPlaceholder) {
@@ -99,24 +113,30 @@ export default function PizzaTimerGrid() {
                     key={item.id}
                     className="timer-grid-placeholder"
                     onDragOver={handleDragOver}
-                    onDrop={() => handleDrop(index)}
+                    onDrop={(e) => handleDrop(e, index)}
                   />
                 );
               }
 
               const timer = item as Timer;
+              const timerIndex = additionalTimers.findIndex(
+                (t) => t.id === timer.id
+              );
               return (
                 <div
                   key={timer.id}
                   draggable
-                  onDragStart={() => handleDragStart(timer.id)}
+                  onDragStart={(e) => handleDragStart(e, timer.id)}
                   onDragOver={handleDragOver}
-                  onDrop={() => handleDrop(index)}
-                  className="timer-drag-wrapper"
+                  onDrop={(e) => handleDrop(e, index)}
+                  onDragEnd={handleDragEnd}
+                  className={`timer-drag-wrapper ${
+                    draggedId === timer.id ? "dragging" : ""
+                  }`}
                 >
                   <TimerCube
                     id={timer.id}
-                    label={`Pizza ${5 + additionalTimers.indexOf(timer)}`}
+                    label={`Pizza ${5 + timerIndex}`}
                     removable={true}
                     onRemove={() => removeTimer(timer.id)}
                   />
